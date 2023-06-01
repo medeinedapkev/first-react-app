@@ -1,12 +1,17 @@
 import './EventItem.css';
 
 function EventItem(props) {
-    let { day, month, title, location, img } = props;
+    let { day, month, title, location, img, href } = props;
+    if (!href || !title) {
+      return '';
+    }
+
     const photoElement = img ? <img src={img} alt='' /> : '';
     const locationElement = location ? <div className="event-location">{location}</div> : '';
+
     return (
         <div className="event-item">
-        <a href="/#">
+        <a href={href}>
           {photoElement}
           <div className="event-content">
           <div className="event-date">
