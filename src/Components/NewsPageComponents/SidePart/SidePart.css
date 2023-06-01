@@ -1,0 +1,17 @@
+.side-part {
+    display: flex;
+    flex-direction: column;
+    width: calc((100% - 30px) / 3);
+}
+
+@media screen and (max-width: 820px) {
+    .side-part {
+        width: calc((100% - 30px) / 2);  
+    }
+} 
+
+@media screen and (max-width: 600px) {
+    .side-part {
+        width: 100%;
+    }
+} 

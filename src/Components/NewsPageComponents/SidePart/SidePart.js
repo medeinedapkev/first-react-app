@@ -1,3 +1,4 @@
+import './SidePart.css';
 import EventWrapper from '../EventWrapper/EventWrapper';
 import PodcastWrapper from '../PodcastWrapper/PodcastWrapper';
 
@@ -9,7 +10,7 @@ function SidePart() {
           </section>
     
           <section className="event">
-            <EventWrapper title='Renginiai' button='Daugiau' />
+            <EventWrapper title='Renginiai' />
           </section>
     
         </div>

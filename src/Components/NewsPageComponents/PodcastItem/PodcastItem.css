@@ -1,0 +1,37 @@
+.podcast-play {
+    display: flex;
+}
+
+.podcast-play img {
+    width: calc(100% / 5);
+}
+
+.podcast-play .time {
+    width: calc(100% / 5 * 3); 
+    background-color: black;
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.podcast-play .button-play {
+    width: calc(100% / 5);
+    border: 1px solid black;
+    position: relative;
+    cursor: pointer
+}
+
+.button-play img {
+    width: 100%;
+}
+
+.podcast-title {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.podcast-description {
+    padding: 17px 20px;
+} 

@@ -1,3 +1,5 @@
+import './EventItem.css';
+
 function EventItem(props) {
     let { day, month, title, location, img } = props;
     const photoElement = img ? <img src={img} alt='' /> : '';

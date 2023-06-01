@@ -1,6 +1,7 @@
 import PodcastItem from '../PodcastItem/PodcastItem';
 import podcastPhoto from '../../../assets/NewsPageAssets/podcast.png';
 import buttonPlay from '../../../assets/NewsPageAssets/button-play.svg';
+import './PodcastWrapper.css';
 
 function PodcastWrapper(props) {
     let { title } = props;

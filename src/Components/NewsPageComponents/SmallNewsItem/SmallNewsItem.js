@@ -1,3 +1,5 @@
+import './SmallNewsItem.css';
+
 function SmallNewsItem(props) {
     let { img, category, title, date } = props;
     return (

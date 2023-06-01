@@ -1,3 +1,5 @@
+import './BigNewsItem.css';
+
 function BigNewsitem(props) {
   let { img, category, title, date } = props;
     return (

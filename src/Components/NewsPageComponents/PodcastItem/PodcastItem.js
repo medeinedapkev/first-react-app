@@ -1,3 +1,5 @@
+import './PodcastItem.css';
+
 function PodcastItem(props) {
     let { time, title, date, podcastPic, buttonPlay } = props;
     return (

@@ -1,0 +1,12 @@
+.podcast-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.podcast-wrapper .title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 30px;
+    margin: 0;
+}
