@@ -1,0 +1,59 @@
+.content .programs-side-menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: calc((100% - 30px) / 3);
+}
+
+.programs-side-menu .side-menu-wrapper {
+    background-color: white;
+    padding: 45px 40px 40px;
+    position: sticky;
+    top: 20px;
+}
+
+.side-menu-wrapper .side-menu-title {
+    font-size: 30px;
+    margin: 0 0 15px;
+}
+
+.side-menu-wrapper .menu-element {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.menu-element label,
+.menu-element legend {
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+.menu-element fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-element fieldset label {
+    font-weight: 400;
+}
+
+.menu-element select {
+    display: block;
+    width: 100%;
+    min-width: 170px;
+    background-color: var(--primary-color);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 13px 20px 11px;
+    margin: 5px;
+}
+
+.menu-element select:hover {
+    background-color: #dbdada;
+}

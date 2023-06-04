@@ -1,10 +1,46 @@
-import PodcastItem from '../PodcastItem/PodcastItem';
+import './PodcastWrapper.css';
+import PodcastItem from '../PodcastItem/PodcastItem.js';
 import podcastPhoto from '../../../assets/NewsPageAssets/podcast.png';
 import buttonPlay from '../../../assets/NewsPageAssets/button-play.svg';
-import './PodcastWrapper.css';
+
+const podcastsData = [
+    {
+        time: 'Trukmė: 7:55',
+        title:'Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas',
+        date: '2022-12-12',
+        podcastPic: podcastPhoto,
+        buttonPlay: buttonPlay,
+        href: '/#',
+    },
+    {
+        time: 'Trukmė: 7:55',
+        title:'Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas',
+        date: '2022-12-12',
+        podcastPic: podcastPhoto,
+        buttonPlay: buttonPlay,
+        href: '/#',
+    },
+    {
+        time: 'Trukmė: 7:55',
+        title:'Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas',
+        date: '2022-12-12',
+        podcastPic: podcastPhoto,
+        buttonPlay: buttonPlay,
+        href: '/#',
+    },
+    {
+        time: 'Trukmė: 7:55',
+        title:'Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas',
+        date: '2022-12-12',
+        podcastPic: podcastPhoto,
+        buttonPlay: buttonPlay,
+        href: '/#',
+    },
+]
 
 function PodcastWrapper(props) {
     let { title } = props;
+
     if (!title) {
         return '';
     }
@@ -12,33 +48,20 @@ function PodcastWrapper(props) {
     return (
         <div className="podcast-wrapper">
            <h2 className="title">{title}</h2>
-           <PodcastItem time='Trukmė: 7:55' 
-           title='Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas' 
-           date='2022-12-12' 
-           podcastPic={podcastPhoto} 
-           buttonPlay={buttonPlay} 
-           href='/#' />
+           { podcastsData.map((podcast, index) => {
+            let { time, title, date, podcastPic, buttonPlay, href } = podcast;
 
-           <PodcastItem time='Trukmė: 7:55' 
-           title='Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas' 
-           date='2022-12-12' 
-           podcastPic={podcastPhoto} 
-           buttonPlay={buttonPlay}
-           href='/#' />
-
-           <PodcastItem time='Trukmė: 7:55' 
-           title='Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas' 
-           date='2022-12-12' 
-           podcastPic={podcastPhoto} 
-           buttonPlay={buttonPlay}
-           href='/#' />
-
-           <PodcastItem time='Trukmė: 7:55' 
-           title='Pojūčius pirštų galiukams sugrąžinti gali smegenų implantas' 
-           date='2022-12-12' 
-           podcastPic={podcastPhoto} 
-           buttonPlay={buttonPlay}
-           href='/#' />
+            return (
+                <PodcastItem time={time} 
+                   title={title} 
+                   date={date} 
+                   podcastPic={podcastPic} 
+                   buttonPlay={buttonPlay} 
+                   href={href}
+                   key={index} />
+            )
+           })
+           }
         </div>
     )
 }

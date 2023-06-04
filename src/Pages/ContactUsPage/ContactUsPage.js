@@ -1,18 +1,17 @@
 import './ContactUsPage.css';
-import '../../Components/MapWrapper/MapWrapper.js';
-import MapWrapper from '../../Components/MapWrapper/MapWrapper.js';
-import ShopsWrapper from '../../Components/ShopWrapper/ShopsWrapper';
+import MapWrapper from '../../Components/ContactUsComponents/MapWrapper/MapWrapper.js';
+import ShopsWrapper from '../../Components/ContactUsComponents/ShopWrapper/ShopsWrapper.js';
+import Container from '../../Components/Container/Container';
 
 function ContactUsPage() {
     return (
-    <div id="main-content">
-        <div className='container'>
-            <div className='content'>
+        <Container classes='' >
+            <div className='contact-content'>
                 <ShopsWrapper title='Find Us' />
                 <MapWrapper />
             </div>
-        </div>
-    </div>
+        </Container>
+       
     )
 }
 

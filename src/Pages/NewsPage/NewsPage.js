@@ -1,3 +1,4 @@
+import Container from '../../Components/Container/Container';
 import MainPart from '../../Components/NewsPageComponents/MainPart/MainPart';
 import SidePart from '../../Components/NewsPageComponents/SidePart/SidePart';
 import './NewsPage.css';
@@ -5,10 +6,10 @@ import './NewsPage.css';
 function NewsPage() {
     return (
         <main>
-        <div className="whole-part container">    
-        <MainPart />
-        <SidePart />
-          </div>
+          <Container classes='whole-part'>
+            <MainPart />
+            <SidePart />
+          </Container> 
         </main>
     )
 }

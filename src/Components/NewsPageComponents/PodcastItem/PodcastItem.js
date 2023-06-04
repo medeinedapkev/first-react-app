@@ -1,14 +1,14 @@
 import './PodcastItem.css';
 
 function PodcastItem(props) {
-    let { time, title, date, podcastPic, buttonPlay, href } = props;
+    let { id, time, title, date, podcastPic, buttonPlay, href } = props;
     if (!title || !time || !href) {
         return '';
     }
 
     const dateElement = date ? <div className="post-card-info">{date}</div> : '';
     return (
-        <div className="podcast-item">
+        <div key={id} className="podcast-item">
         <div className="podcast-play">
             <img src={podcastPic} alt='' />
             <p className="time">{time}</p>

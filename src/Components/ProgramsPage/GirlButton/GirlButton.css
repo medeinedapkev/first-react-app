@@ -1,0 +1,30 @@
+
+.girl-button {
+    width: 100%;
+    background-color: white;
+    background-image: url(../../../assets/ProgramsPageAssets/girl.jpg);
+    background-position: 70% 75%;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    padding: 30px 40px;
+}
+
+.girl-button a {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.girl-button .first-sentence {
+    color: rgb(216, 68, 182);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.girl-button .second-sentence {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-weight: 700;
+}
