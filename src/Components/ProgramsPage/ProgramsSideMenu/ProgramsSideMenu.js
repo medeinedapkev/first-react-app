@@ -1,10 +1,10 @@
 import './ProgramsSideMenu.css';
 
-function ProgramsSideMenu() {
+function ProgramsSideMenu({title, button}) {
     return (
         <section className="programs-side-menu">
                     <div className="side-menu-wrapper">
-                    <h2 className="side-menu-title">Rastos 48 programos</h2>
+                    <h2 className="side-menu-title">{title}</h2>
                      <div className="menu-element">
                         <label htmlFor="theme">Tema</label>
                         <select nameName="topic" id="theme">
@@ -56,7 +56,7 @@ function ProgramsSideMenu() {
                     </fieldset>
                      </div>
 
-                     <button className="button" type="reset">išvalyti</button>
+                     <button className="button" type="reset">{button}</button>
 
                     </div>
                   </section>

@@ -16,7 +16,7 @@ function ProgramsPage() {
             </div>
             
             <div className="content">
-                <ProgramsSideMenu />
+                <ProgramsSideMenu title='Rastos 48 programos' button='išvalyti' />
               <section className="programs">    
                 <ProgramsWrapper />
               </section>
