@@ -1,4 +1,4 @@
-import './GirlButton.css';
+import './BackgroundImgButton.css';
 
 function GirlButton({href, text1, text2}) {
     if (!href) {

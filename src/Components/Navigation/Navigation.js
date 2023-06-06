@@ -1,6 +1,6 @@
 import './Navigation.css';
 import CodeAcademyLogo from '../../assets/CodeAcademy-visi_Logotipas-juodas.png';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Container from '../Container/Container';
 
 function Navigation() {
@@ -10,13 +10,13 @@ function Navigation() {
           <div className="main-header-wrapper">
   
             <div className="logo-wrapper">
-                <Link to='/'>
+                <NavLink to='/'>
                   <img
                     src={CodeAcademyLogo}
                     width="115"
                     alt="CodeAcademy"
                   />
-                </Link>
+                </NavLink>
             </div>
   
             <input className="side-menu" type="checkbox" id="side-menu"/>
@@ -27,16 +27,19 @@ function Navigation() {
             <nav className="main-navigation">
               <ul className="main-menu">
                 <li className="menu-item">
-                  <Link to='/'>Apie mus</Link>
+                  <NavLink to='/'>Apie mus</NavLink>
                 </li>
                 <li className="menu-item">
-                  <Link to="/programs-page">Programos</Link>
+                  <NavLink to="/programs-page">Programos</NavLink>
                 </li>
                 <li className="menu-item">
-                  <Link to="/news-page">Naujienos</Link>
+                  <NavLink to="/news-page">Naujienos</NavLink>
                 </li>
                 <li className="menu-item">
-                  <Link to='/contact-us'>Kontaktai</Link>
+                  <NavLink to='/contact-us'>Kontaktai</NavLink>
+                </li>
+                <li className="menu-item">
+                  <NavLink to='/counter-page'>Counter</NavLink>
                 </li>
                 <li className="menu-item"><a href="/#">EN</a></li>
               </ul>

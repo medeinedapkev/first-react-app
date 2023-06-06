@@ -1,5 +1,5 @@
 import Container from '../../Components/Container/Container';
-import GirlButton from '../../Components/ProgramsPage/GirlButton/GirlButton';
+import GirlButton from '../../Components/ProgramsPage/BackgroundImgButton/BackgroundImgButton';
 import ProgramsSideMenu from '../../Components/ProgramsPage/ProgramsSideMenu/ProgramsSideMenu';
 import ProgramsWrapper from '../../Components/ProgramsPage/ProgramsWrapper/ProgramsWrapper';
 import './ProgramsPage.css';
