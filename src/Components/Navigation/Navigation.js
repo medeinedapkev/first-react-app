@@ -41,6 +41,9 @@ function Navigation() {
                 <li className="menu-item">
                   <NavLink to='/counter-page'>Counter</NavLink>
                 </li>
+                <li className="menu-item">
+                  <NavLink to='/shopping-list'>Shopping list</NavLink>
+                </li>
                 <li className="menu-item"><a href="/#">EN</a></li>
               </ul>
               <a className="nav-button" href="tel:+370 663 66 555">Skambinti</a>
