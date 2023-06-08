@@ -62,7 +62,7 @@ function ShoppingListPage() {
             
             return newState;
         })
-
+        
         setNewItem('');
     }
 
