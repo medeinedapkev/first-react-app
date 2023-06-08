@@ -6,6 +6,7 @@ import Container from './Components/Container/Container.js';
 import ProgramsPage from './Pages/ProgramsPage/ProgramsPage.js';
 import CounterPage from './Pages/CounterPage/CounterPage.js';
 import ShoppingListPage from './Pages/ShoppingListPage/ShoppingListPage.js';
+import CitiesPage from './Pages/CitiesPage/CitiesPage.js';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/programs-page' element={<ProgramsPage />} />
         <Route path='/counter-page' element={<CounterPage />} />
         <Route path='/shopping-list' element={<ShoppingListPage />} />
+        <Route path='/cities-page' element={<CitiesPage />} />
         <Route path='/' element={
           <Container>
         <h1>Home page</h1>

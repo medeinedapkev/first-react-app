@@ -71,7 +71,7 @@ const CounterPage = () => {
     <ul>
         {scores.map((score, index) => (
         <li className={getDisplayClass(score)} key={index}>{score}           
-        <button onClick={() => deleteScoreHandler(index)}>Delete</button>
+           <button onClick={() => deleteScoreHandler(index)}>Delete</button>
         </li>)
         )}
     </ul>

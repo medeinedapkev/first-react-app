@@ -1,0 +1,25 @@
+.cities-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#form-submit-button {
+    width: 70px;
+}
+
+.cities-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.city-item {
+    background-color: white;
+    padding: 0 20px;
+    width: calc((100% - 20px) /2);
+}
+
+.odd-last-city {
+    width: 100%;
+}
