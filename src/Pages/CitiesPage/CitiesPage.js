@@ -1,10 +1,10 @@
 import './CitiesPage.css';
-import CitiesItem from '../../Components/CitiesPageComponents/CitiesItem.js';
 import Container from '../../Components/Container/Container.js';
 import { useState } from 'react';
+import CitiesForm from '../../Components/CitiesPageComponents/CitiesForm';
+import CitiesWrapper from '../../Components/CitiesPageComponents/CitiesWrapper';
 
 function CitiesPage() {
-
     const citiesData = [
         {
             name: 'Vilnius',
@@ -15,6 +15,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Vilniaus katedra', 'Gedimino pilies bokštas', 'Aušros vartai'],
             isCapital: true,
+            features: ['Art Galleries', 'Historic Sites'],
         },
         {
             name: 'Kaunas',
@@ -25,6 +26,7 @@ function CitiesPage() {
             },
             touristAttractions: [],
             isCapital: false,
+            features: ['Historic Sites'],
         },
         {
             name: 'Klaipėda',
@@ -35,6 +37,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Lietuvos jūrų muziejus'],
             isCapital: false,
+            features: ['Beach', 'Hiking trails'],
         },
         {
             name: 'Varšuva',
@@ -45,6 +48,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Warsaw castle'],
             isCapital: true,
+            features: ['Hiking trails', 'Historic Sites', 'Bus Tours'],
         },
         {
             name: 'Ryga',
@@ -55,6 +59,7 @@ function CitiesPage() {
             },
             touristAttractions: [],
             isCapital: true,
+            features: [],
         },
         {
             name: 'Berlynas',
@@ -65,6 +70,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Brandenbergo vartai', 'Berlyno katedra', 'Berlyno zoologijos muziejus', 'Pergamo muziejus'],
             isCapital: true,
+            features: ['Metro', 'Hiking trails', 'Bus Tours'],
         },
         {
             name: 'Praha',
@@ -75,6 +81,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Karolio tiltas', 'Prahos pilis', 'Prahos zoologijos sodas', 'Šokantis namas'],
             isCapital: true,
+            features: ['Bus Tours'],
         },
         {
             name: 'Paryžius',
@@ -85,6 +92,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Eifelio bokštas', 'Luvras', 'Triumfo arka'],
             isCapital: true,
+            features: ['Metro', 'Art Galleries', 'Historic Sites', 'Bus Tours'],
         },
         {
             name: 'Roma',
@@ -95,6 +103,7 @@ function CitiesPage() {
             },
             touristAttractions: ['Koliziejus', 'Trevi fontanas', 'Panteonas'],
             isCapital: true,
+            features: ['Beach', 'Metro', 'Historic Sites', 'Bus Tours'],
         },
         {
             name: 'Venecija',
@@ -105,115 +114,28 @@ function CitiesPage() {
             },
             touristAttractions: ['Šv. Morkaus bazilika'],
             isCapital: false,
+            features: ['Art Galleries', 'Historic Sites', 'Bus Tours'],
         },
     ]
 
     const [ cities, setCities ] = useState(citiesData);
-    const [ cityName, setCityName ] = useState('');
-    const [ cityPopulation, setCityPopulation ] = useState('');
-    const [ cityContinent, setCityContinent ] = useState('');
-    const [ cityCountry, setCityCountry ] = useState('');
-    const [ cityAttractions, setCityAttractions ] = useState('');
-    const [ cityIsCapital, setCityIsCapital ] = useState(false);
 
-    const cityNameHandler = (event) => setCityName(event.target.value);
-    const cityPopulationHandler = (event) => setCityPopulation(event.target.value);
-    const cityContinentHandler = (event) => setCityContinent(event.target.value);
-    const cityCountryHandler = (event) => setCityCountry(event.target.value);
-    const cityAttractionsHandler = (event) => setCityAttractions(event.target.value);
-    const cityIsCapitalHandler  = (event) => setCityIsCapital(event.target.value);
-
-    function firstLetterUpperCase(element) {
-        const firstLetter = element.charAt(0).toUpperCase();
-        const lastOfStr = element.slice(1, element.length)
-        const newElement = firstLetter + lastOfStr;
-
-        return newElement
-    }
-
-    function formSubmitHandler(event) {
-        event.preventDefault()
-
-        let attractionsElement;
-
-        if (cityAttractions && cityAttractions.length > 0) {
-            attractionsElement = cityAttractions.split(',')
-        }
-
+    function addNewCity(newCity) {
         setCities(prevState => {
-            let newCityData = {
-                name: firstLetterUpperCase(cityName),
-                population: Number(cityPopulation),
-                location: {
-                    continent: firstLetterUpperCase(cityContinent),
-                    country: firstLetterUpperCase(cityCountry),
-                },
-                touristAttractions: attractionsElement,
-                isCapital: cityIsCapital,
-            };
+        const newState = [newCity, ...prevState];
 
-            const newState = [newCityData, ...prevState]
-            console.log(newState)
+        return newState;
+    })
 
-            return newState;
-        })
-
-        setCityName('');
-        setCityPopulation('');
-        setCityContinent('');
-        setCityCountry('');
-        setCityAttractions('');
-        setCityIsCapital(false);
-        console.log(cityIsCapital)
     }
 
-  return (
-    <Container>
-        <form className='cities-form' onSubmit={formSubmitHandler}>
-            <div>
-                <label htmlFor='city-name'>City: </label>
-                <input type='text' name='city-name' id='city-name' value={cityName} onChange={cityNameHandler} />
-            </div>
+    return (
+        <Container>
+            <CitiesForm onNewCity={addNewCity} />
 
-            <div>
-                <label htmlFor='city-population'>Population: </label>
-                <input type='number' name='city-population' id='city-population' value={cityPopulation} onChange={cityPopulationHandler} />
-            </div>
-
-            <div>
-                <label htmlFor='city-continent'>Continent: </label>
-                <input type='text' name='city-continent' id='city-continent' value={cityContinent} onChange={cityContinentHandler} />
-            </div>
-
-            <div>
-                <label htmlFor='city-country'>Country: </label>
-                <input type='text' name='city-country' id='city-country' value={cityCountry} onChange={cityCountryHandler} />
-            </div>
-
-            <div>
-                <label htmlFor='city-attractions'>Tourist attractions: </label>
-                <textarea name='city-attractions' id='city-attractions' value={cityAttractions} onChange={cityAttractionsHandler} />
-            </div>
-
-            <div>
-                <label htmlFor='city-capital'>Is capital: </label>
-                <input type='checkbox' name='city-capital' id='city-capital' value={cityIsCapital} onChange={cityIsCapitalHandler}></input>
-            </div>
-            
-            <input type='submit' id='form-submit-button' />
-        </form>
-        <div className='cities-wrapper'>
-            {cities.map((city, index) => {
-                let lastElementClass = '';
-                if (index === cities.length - 1 && cities.length % 2 !== 0) {
-                    lastElementClass = ' odd-last-city';
-                }
-                return <CitiesItem data={city} key={index} oddClass={lastElementClass} />
-                }
-            )}
-        </div>
-    </Container>
-  )
+            <CitiesWrapper citiesData={cities} setFunction={setCities} />
+        </Container>
+    )
 }
 
 export default CitiesPage;

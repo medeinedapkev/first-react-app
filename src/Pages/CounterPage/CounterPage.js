@@ -1,6 +1,7 @@
 import './CounterPage.css';
 import Container from '../../Components/Container/Container';
 import { useState } from 'react';
+import { deleteHandler, deleteAllHandler } from '../../Components/Functions/Functions.js';
 
 
 const CounterPage = () => {
@@ -46,32 +47,31 @@ const CounterPage = () => {
         return displayClassName;
     }
 
-    function deleteScoreHandler(index) {
-        setScores(prevState => {
-            const newState = [...prevState];
-            newState.splice(index, 1);
-            return newState;
-        })
+    // function deleteScoreHandler(index) {
+    //     setScores(prevState => {
+    //         const newState = [...prevState];
+    //         newState.splice(index, 1);
+    //         return newState;
+    //     })
         // const updatedScores = [...scores];
         // updatedScores.splice(index, 1);
         // setScores(updatedScores);
-    }
+    // }
 
-    function deleteAllScoresHandler() {
-        setScores(prevState => {
-            const newState = [...prevState]
-            newState.splice(0, newState.length)
+    // function deleteAllScoresHandler() {
+    //     setScores(prevState => {
+    //         const newState = [...prevState]
+    //         newState.splice(0, newState.length)
 
-            return newState;
-        })
-
-    }
+    //         return newState;
+    //     })
+    // }
     
     const scoreElement = scores && scores.length > 0 && (
     <ul>
         {scores.map((score, index) => (
         <li className={getDisplayClass(score)} key={index}>{score}           
-           <button onClick={() => deleteScoreHandler(index)}>Delete</button>
+           <button onClick={() => deleteHandler(setScores, index)}>Delete</button>
         </li>)
         )}
     </ul>
@@ -92,7 +92,7 @@ const CounterPage = () => {
            <button onClick={() => countButtonHandler(1)} disabled={count >= 10}>+1</button>
 
            <button onClick={addScoreHandler}>Add score</button>
-           <button onClick={deleteAllScoresHandler}>Delete all scores</button>
+           <button onClick={() => deleteAllHandler(setScores)}>Delete all scores</button>
         </div>
 
         <div className='scores-wrapper'>

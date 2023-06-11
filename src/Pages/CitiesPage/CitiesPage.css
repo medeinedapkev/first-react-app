@@ -1,13 +1,3 @@
-.cities-form {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-#form-submit-button {
-    width: 60px;
-}
-
 .cities-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -22,4 +12,19 @@
 
 .odd-last-city {
     width: 100%;
+}
+
+.cities-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-submit-button {
+    width: 60px;
 }
