@@ -7,6 +7,7 @@ import ProgramsPage from './Pages/ProgramsPage/ProgramsPage.js';
 import CounterPage from './Pages/CounterPage/CounterPage.js';
 import ShoppingListPage from './Pages/ShoppingListPage/ShoppingListPage.js';
 import CitiesPage from './Pages/CitiesPage/CitiesPage.js';
+import ToDoPage from './Pages/ToDoPage/ToDoPage.js';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/counter-page' element={<CounterPage />} />
         <Route path='/shopping-list' element={<ShoppingListPage />} />
         <Route path='/cities-page' element={<CitiesPage />} />
+        <Route path='/to-do-list' element={<ToDoPage />} />
         <Route path='/' element={
           <Container>
         <h1>Home page</h1>

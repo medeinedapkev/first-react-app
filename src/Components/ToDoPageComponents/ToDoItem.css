@@ -1,0 +1,4 @@
+.to-do-item {
+    display: flex;
+    flex-direction: column;
+}

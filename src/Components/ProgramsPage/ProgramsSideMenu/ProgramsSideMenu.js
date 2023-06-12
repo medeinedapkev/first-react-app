@@ -1,3 +1,4 @@
+import Button from '../../Button/Button.js';
 import './ProgramsSideMenu.css';
 
 function ProgramsSideMenu({title, button}) {
@@ -56,7 +57,7 @@ function ProgramsSideMenu({title, button}) {
                     </fieldset>
                      </div>
 
-                     <button className="button" type="reset">{button}</button>
+                     <Button type='reset' text={button} ></Button>
 
                     </div>
                   </section>
