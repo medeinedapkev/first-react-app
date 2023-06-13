@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 
-
-
 const ToDoPageForm = ({ onToDo }) => {
     
     const [ date, setDate ] = useState(new Date());
     useEffect(() => {
-        const timer = setInterval(() => setDate(new Date()), 1000)
+        const timer = setInterval(() => setDate(new Date()), 1000, [])
         return function cleanUp() {
             clearInterval(timer);
         }
@@ -18,24 +16,22 @@ const ToDoPageForm = ({ onToDo }) => {
 
     const titleHandler = (e) => setTitle(e.target.value);
     const descriptionHandler = (e) => setDescription(e.target.value);
-    const deadlineHandler = (e) => setDeadline(e.target.value)
+    const deadlineHandler = (e) => setDeadline(e.target.value);
 
     function addNewToDo(event) {
         event.preventDefault();
 
-        const newToDo = {
-            date: date.toLocaleDateString().split('/').join('-'),
-            title: title,
-            description: description,
-            deadline: deadline,
-        }
+        const newDate = new Date();
+        const day = newDate.getDate().toString().padStart(2, '0');
+        const month = (newDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = newDate.getFullYear();
+        const date = `${year}-${month}-${day}`;
+
+        const id = 'id' + Math.floor(Math.random() * 2999);
+
+        const newToDo = { date, title, description, deadline, isDone: false, id };
 
         onToDo(newToDo);
-
-        console.log(date.toLocaleDateString().split('/').join('-'))
-        console.log(title)
-        console.log(description)
-        console.log(deadline)
 
         setTitle('');
         setDescription('');
@@ -55,7 +51,7 @@ const ToDoPageForm = ({ onToDo }) => {
         </div>
         <div className='form-item'>
             <label htmlFor='to-do-date'>Deadline: </label>
-            <input type='date' name='to-do-date' id='to-do-date' value={deadline} onChange={deadlineHandler} />
+            <input type='date' name='to-do-date' id='to-do-date' value={'2025-06-17'} onChange={deadlineHandler} />
         </div>
 
         <button type='submit'>Submit</button>

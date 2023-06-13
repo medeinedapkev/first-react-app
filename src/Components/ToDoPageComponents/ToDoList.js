@@ -1,11 +1,13 @@
-import ToDoItem from './ToDoItem';
+import ToDoItem from './ToDoItem.js';
 
-
-const ToDoList = ({ toDoData, setFunction }) => {
+const ToDoList = ({ toDoData, onIsDone, onToDoDelete }) => {
+    if (!toDoData || toDoData.length === 0) {
+        return '';
+    }
 
   return (
     <div className='to-do-list'>
-        {toDoData.map((toDo, index) => <ToDoItem key={index} data={toDo} setFunction={setFunction} />)}
+        {toDoData.map((toDo, index) => <ToDoItem key={index} data={toDo} index={index} onIsDone={onIsDone} onToDoDelete={onToDoDelete} />)}
     </div>
   )
 }
