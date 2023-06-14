@@ -2,11 +2,12 @@ import Container from '../../Components/Container/Container.js';
 import ToDoPageForm from '../../Components/ToDoPageComponents/ToDoForm.js';
 import { useState } from 'react';
 import ToDoList from '../../Components/ToDoPageComponents/ToDoList.js';
+import { v4 as uuid } from 'uuid';
 
 const ToDoPage = () => {
     const toDoData = [
         {
-            id: 1,
+            id: uuid(),
             date: '2023-06-13',
             title: 'Task 1',
             description: 'Description 1',
@@ -14,7 +15,7 @@ const ToDoPage = () => {
             deadline: '2023-07-10',
           },
           {
-            id: 2,
+            id: uuid(),
             date: '2023-06-14',
             title: 'Task 2',
             description: 'Description 2',
@@ -31,15 +32,17 @@ const ToDoPage = () => {
             setToDo(prevState => {
                 const newState = [...prevState];
                 newState.splice(index, 1, todo);
+                const sortedTodo = filterIsDone(newState);
 
-                return newState;
+                return sortedTodo;
             })
             setIsEditing(null);
         } else {
             setToDo(prevState => {
                 const newState = [todo, ...prevState];
-    
-                return newState;
+                const sortedTodo = filterIsDone(newState);
+
+                return sortedTodo;
             })
         }
     }
@@ -51,18 +54,22 @@ const ToDoPage = () => {
 
     function addIsDoneHandler(id) {
         const index = toDo.findIndex(obj => obj.id === id);
-        // console.log(index)
         setToDo(prevState => {
             let newState = [...prevState];
-            // console.log(newState[index].isDone)
             newState[index] = {...newState[index], isDone: !newState[index].isDone};
-            // console.log(newState[index])
-            // console.log(newState[index].isDone)
-            // console.log(newState)
+            const sortedTodo = filterIsDone(newState);
 
-            return newState;
+            return sortedTodo;
         })
     }
+
+    function filterIsDone(data) {
+        const done = data.filter(obj => obj.isDone === true);
+        const notDone = data.filter(obj => obj.isDone === false);
+
+        return [...notDone, ...done];
+    }
+    
 
     function deleteTaskHandler(id) {
         const index = toDo.findIndex(obj => obj.id === id);

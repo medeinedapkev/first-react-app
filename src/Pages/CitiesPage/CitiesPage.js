@@ -126,7 +126,6 @@ function CitiesPage() {
 
         return newState;
     })
-
     }
 
     return (

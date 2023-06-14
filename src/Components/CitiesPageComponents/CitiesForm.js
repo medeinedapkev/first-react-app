@@ -8,7 +8,7 @@ const CitiesForm = ({ onNewCity }) => {
     const [ cityCountry, setCityCountry ] = useState('');
     const [ cityAttractions, setCityAttractions ] = useState('');
     const [ cityIsCapital, setCityIsCapital ] = useState(false);
-    const [ cityFeatures, setCityFeatures ] = useState(false)
+    const [ cityFeatures, setCityFeatures ] = useState('')
 
     const cityNameHandler = (event) => setCityName(event.target.value);
     const cityPopulationHandler = (event) => setCityPopulation(event.target.value);
@@ -20,9 +20,9 @@ const CitiesForm = ({ onNewCity }) => {
     const cityFeaturesHandler = (event) => {
         console.log(event.target.checked)
         if (event.target.checked === true) {
-            console.dir(event.target)
+            setCityFeatures([event.target.value])
+            console.dir(cityFeatures)
         }
-        return ['fafa']
     }
 
     function formSubmitHandler(event) {
@@ -122,32 +122,32 @@ const CitiesForm = ({ onNewCity }) => {
         <legend>Choose activities</legend>
         <div>
             <label htmlFor='bus-tour'>Bus Tours </label>
-            <input type='checkbox' name='bus-tour' id='bus-tour' values='Bus-Tour' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='bus-tour' id='bus-tour' value='Bus-Tour' checked={cityFeatures === 'Bus-Tour'} onChange={cityFeaturesHandler} />
         </div> 
 
         <div>
             <label htmlFor='historic-sites'>Historic Sites </label>
-            <input type='checkbox' name='historic-sites' id='historic-sites' values='Historic-Sites' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='historic-sites' id='historic-sites' value='Historic-Sites' checked={cityFeatures === 'Historic-Sites'} onChange={cityFeaturesHandler} />
         </div>
 
         <div>
             <label htmlFor='beach'>Beach </label>
-            <input type='checkbox' name='beach' id='beach' values='Beach' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='beach' id='beach' value='Beach' checked={cityFeatures === 'Beach'} onChange={cityFeaturesHandler} />
         </div>
 
         <div>
             <label htmlFor='metro'>Metro </label>
-            <input type='checkbox' name='metro' id='metro' values='Metro' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='metro' id='metro' value='Metro' checked={cityFeatures === 'Metro'} onChange={cityFeaturesHandler} />
         </div>
 
         <div>
             <label htmlFor='hiking-trails'>Hiking trails </label>
-            <input type='checkbox' name='hiking-trails' id='hiking-trails' values='Hiking Trails' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='hiking-trails' id='hiking-trails' value='Hiking Trails' checked={cityFeatures === 'Hiking Trails'} onChange={cityFeaturesHandler} />
         </div>
 
         <div>
             <label htmlFor='art-galleries'>Art Galleries </label>
-            <input type='checkbox' name='art-galleries' id='art-galleries' values='Art Galleries' checked={cityFeatures} onChange={cityFeaturesHandler} />
+            <input type='checkbox' name='art-galleries' id='art-galleries' value='Art Galleries' checked={cityFeatures === 'Art Galleries'} onChange={cityFeaturesHandler} />
         </div>
     </fieldset>
 

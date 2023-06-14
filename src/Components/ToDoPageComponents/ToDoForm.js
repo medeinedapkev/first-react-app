@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuid } from 'uuid';
 
 const ToDoPageForm = ({ onToDo, editData }) => {
     
@@ -35,7 +36,8 @@ const ToDoPageForm = ({ onToDo, editData }) => {
         const year = newDate.getFullYear();
         const date = `${year}-${month}-${day}`;
 
-        const id = 'id' + Math.floor(Math.random() * 2999);
+        // const id = 'id' + Math.floor(Math.random() * 2999);
+        const id = uuid();
 
         let newToDo = {};
 

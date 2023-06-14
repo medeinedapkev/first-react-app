@@ -19,5 +19,3 @@ const ToDoList = ({ toDoData, onIsDone, onTaskDelete, onTaskEdit }) => {
 }
 
 export default ToDoList;
-
-//7. Padaryti jog atliktos užduotys būtų atvaizduojamos pabaigoje, o dar neatliktos - pradžioje.
