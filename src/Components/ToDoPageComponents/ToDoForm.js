@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ToDoPageForm = ({ onToDo }) => {
+const ToDoPageForm = ({ onToDo, editData }) => {
     
     const [ date, setDate ] = useState(new Date());
     useEffect(() => {
@@ -13,6 +13,14 @@ const ToDoPageForm = ({ onToDo }) => {
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
     const [ deadline, setDeadline ] = useState('');
+
+    useEffect(() => {
+        if (editData) {
+            setTitle(editData.title);
+            setDescription(editData.description);
+            setDeadline(editData.deadline);
+        }
+    }, [editData])
 
     const titleHandler = (e) => setTitle(e.target.value);
     const descriptionHandler = (e) => setDescription(e.target.value);
@@ -29,10 +37,23 @@ const ToDoPageForm = ({ onToDo }) => {
 
         const id = 'id' + Math.floor(Math.random() * 2999);
 
-        const newToDo = { date, title, description, deadline, isDone: false, id };
+        let newToDo = {};
+
+        if (editData) {
+            newToDo = {
+                date: editData.date,
+                title,
+                description,
+                deadline,
+                isDone: editData.isDone,
+                id: editData.id,
+                editDate: newDate.toISOString().slice(0, 10),
+            }
+        } else {
+            newToDo = { date, title, description, deadline, isDone: false, id };
+        }
 
         onToDo(newToDo);
-
         setTitle('');
         setDescription('');
         setDeadline(''); 
@@ -51,10 +72,10 @@ const ToDoPageForm = ({ onToDo }) => {
         </div>
         <div className='form-item'>
             <label htmlFor='to-do-date'>Deadline: </label>
-            <input type='date' name='to-do-date' id='to-do-date' value={'2025-06-17'} onChange={deadlineHandler} />
+            <input type='date' name='to-do-date' id='to-do-date' value={deadline} onChange={deadlineHandler} />
         </div>
 
-        <button type='submit'>Submit</button>
+        <button type='submit'>{editData ? 'Save' : 'Create new a task'}</button>
     </form>
   )
 }

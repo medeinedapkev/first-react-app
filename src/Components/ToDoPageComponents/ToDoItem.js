@@ -1,8 +1,7 @@
 import './ToDoItem.css';
-// import { useState } from 'react';
 
-const ToDoItem = ({ data, index, onIsDone, onToDoDelete }) => {
-    const { date, title, description, deadline, id, isDone } = data;
+const ToDoItem = ({ data, index, onIsDone, onTaskDelete, onTaskEdit }) => {
+    const { date, title, description, deadline, id, isDone, editDate } = data;
 
     if (!title || !id) {
         return '';
@@ -43,6 +42,7 @@ const ToDoItem = ({ data, index, onIsDone, onToDoDelete }) => {
     const descriptionElement = description && <p>{description}</p>;
     const deadlineElement = deadline && <span>Deadline: {deadline}</span>;
     const dateElement = date && <span>{date}</span>;
+    const editDateElement = editDate && <span>Edited: {editDate}</span>
 
   return (
     <div className='to-do-item' id={id}>
@@ -51,13 +51,14 @@ const ToDoItem = ({ data, index, onIsDone, onToDoDelete }) => {
         {descriptionElement}
         {deadlineElement}
         {timeLeftElement}
+        {editDateElement}
 
         <div>
             <label htmlFor={`done-${index}`}>{isDone ? 'Task is complited' : 'Task is done:' }</label>
             <input type='checkbox' name='is-done' id={`done-${index}`} checked={isDone} onChange={() => onIsDone(id)} />
         </div>
-        <button onClick={() => onToDoDelete(id)}>Delete</button>
-        <button onClick={() => console.log('veikia')}>Edit</button>
+        <button onClick={() => onTaskDelete(id)}>Delete</button>
+        <button onClick={() => onTaskEdit(id)}>Edit</button>
     </div>
   )
 }

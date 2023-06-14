@@ -25,16 +25,28 @@ const ToDoPage = () => {
     const [ toDo, setToDo ] = useState(toDoData);
     const [ isEditing, setIsEditing ] = useState(null)
 
-    function addNewToDo(newToDo) {
+    function addNewToDo(todo) {
         if (isEditing) {
-            console.log('redaguojam')
+            const index = toDo.findIndex(obj => obj.id === todo.id)
+            setToDo(prevState => {
+                const newState = [...prevState];
+                newState.splice(index, 1, todo);
+
+                return newState;
+            })
+            setIsEditing(null);
         } else {
             setToDo(prevState => {
-                const newState = [newToDo, ...prevState];
+                const newState = [todo, ...prevState];
     
                 return newState;
             })
         }
+    }
+
+    function editTaskHandler(id) {
+        const editToDo = toDo.find(obj => obj.id === id);
+        setIsEditing(editToDo);
     }
 
     function addIsDoneHandler(id) {
@@ -52,7 +64,7 @@ const ToDoPage = () => {
         })
     }
 
-    function deleteToDoHandler(id) {
+    function deleteTaskHandler(id) {
         const index = toDo.findIndex(obj => obj.id === id);
         setToDo(prevState => {
             const newState = [...prevState];
@@ -64,9 +76,9 @@ const ToDoPage = () => {
 
   return (
     <Container>
-        <ToDoPageForm onToDo={addNewToDo} />
+        <ToDoPageForm onToDo={addNewToDo} editData={isEditing} />
 
-        <ToDoList toDoData={toDo} onIsDone={addIsDoneHandler} onToDoDelete={deleteToDoHandler} />
+        <ToDoList toDoData={toDo} onIsDone={addIsDoneHandler} onTaskDelete={deleteTaskHandler} onTaskEdit={editTaskHandler} />
     </Container>
   )
 }
