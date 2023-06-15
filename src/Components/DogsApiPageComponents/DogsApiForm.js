@@ -1,40 +1,51 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
-
-const DogsApiForm = () => {
-    const [ breeds, setBreeds ] = useState({})
+const DogsApiForm = ({ onSelectBreed, selectedBreed }) => {
+    const [ breeds, setBreeds ] = useState([])
 
     useEffect(() => {
         fetch('https://dog.ceo/api/breeds/list/all')
         .then(res => res.json())
-        .then(breedsData => {
-            // const allBreeds = Object.entries(breedsData.message);
-            // setBreeds(allBreeds);
-            // console.log(allBreeds[0][1])
-            // console.log(allBreeds.length)
+        .then(data => {
+            const breedsData = data.message;
+            const breedsArr = [];
 
-            const breeds = breedsData.message;
+            for (let mainBreed in breedsData) {
+                const subBreeds = breedsData[mainBreed];
+                const breedObj = { mainBreed, subBreeds };
 
-            
-            for (const key in breeds) {
-              const mainBreed = key;
-              const subBreeds = breeds[key];
-            //   console.log(mainBreed)
-            //   console.log(subBreeds)
-              console.log([mainBreed, ...subBreeds])
+                breedsArr.push(breedObj);
             }
-        })
+
+            setBreeds(breedsArr);
+        });
     }, [])
+
+    const breedsOptionElement = breeds.map(data => {
+        const { mainBreed, subBreeds } = data;
+
+        if (subBreeds.length > 0 ) {
+            const subBreedsOptions = subBreeds.map(subBreed => <option value={`${mainBreed}/${subBreed}`} key={uuid()}>{mainBreed} ({subBreed})</option>);
+            
+            return subBreedsOptions;
+        }
+        
+        return <option key={uuid()} value={mainBreed}>{mainBreed}</option>;
+    })
+
+    if (breeds.length === 0) {
+        return '';
+    }
 
 
   return (
     <form>
         <label htmlFor='select-breed'>Select breed: </label>
-        <select name='select-breed' id='select-breed' >
-            {/* {breeds.forEach(breed => console.log(breed))} */}
+        <select value={selectedBreed} onChange={(e) => onSelectBreed(e.target.value)} name='select-breed' id='select-breed'>
+            <option value='' disabled>--- Select a breed ---</option>
+            {breedsOptionElement}
         </select>
-        <input type='submit' />
     </form>
   )
 }

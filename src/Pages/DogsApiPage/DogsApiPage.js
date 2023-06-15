@@ -1,23 +1,17 @@
 import { useState } from 'react';
 import Container from '../../Components/Container/Container.js';
 import DogsApiForm from '../../Components/DogsApiPageComponents/DogsApiForm.js';
+import DogsApiItem from '../../Components/DogsApiPageComponents/DogsApiItem.js';
 
 const DogsApiPage = () => {
-    const [ dogPic, setDogPic ] = useState('');
+    const [ selectedBreed, setSelectedBreed ] = useState('');
 
-    const randomDogHandler = () => {
-        fetch('https://dog.ceo/api/breeds/image/random')
-        .then(res => res.json())
-        .then(randomDogPic => setDogPic(randomDogPic.message))
-    }
-
+    const selectHandler = (breed) => {setSelectedBreed(breed)};
 
   return (
     <Container>
-        <DogsApiForm />
-
-        <button onClick={randomDogHandler}>Get random dog picture</button>
-        {dogPic && (<img alt='' src={dogPic} />)}
+        <DogsApiForm onSelectBreed={selectHandler} selectedBreed={selectedBreed} />
+        <DogsApiItem selectedBreed={selectedBreed} />
     </Container>
   )
 }
