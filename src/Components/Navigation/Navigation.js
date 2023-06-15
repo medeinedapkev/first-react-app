@@ -53,6 +53,12 @@ function Navigation() {
                 <li className="menu-item">
                   <NavLink to='/api/chuck-norris'>Chuck Norris jokes</NavLink>
                 </li>
+                <li className="menu-item">
+                  <NavLink to='/api/dogs-page'>Dogs Page</NavLink>
+                </li>
+                <li className="menu-item">
+                  <NavLink to='/api/ai-page'>AI Page</NavLink>
+                </li>
                 <li className="menu-item"><a href="/#">EN</a></li>
               </ul>
               <a className="nav-button" href="tel:+370 663 66 555">Skambinti</a>
