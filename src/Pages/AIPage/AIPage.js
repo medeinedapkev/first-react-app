@@ -11,10 +11,11 @@ const AIPage = () => {
     const [ nationalities, setNationalities ] = useState([]);
 
     function formHandler(searchName) {
+        setName(searchName);
+        
         fetch(`https://api.agify.io?name=${searchName}`)
         .then(res => res.json())
         .then(ageData => {
-            setName(ageData.name);
             setAge(ageData.age);
         })
 
