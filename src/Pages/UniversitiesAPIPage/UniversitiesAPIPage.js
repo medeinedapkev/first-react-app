@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Container from '../../Components/Container/Container.js';
 import UniversitiesAPIForm from '../../Components/UniversitiesAPIPageComponents/UniversitiesAPIForm.js';
 import UniversitiesAPIItem from '../../Components/UniversitiesAPIPageComponents/UniversitiesAPIItem.js';

@@ -10,13 +10,12 @@ const UniversitiesAPIItem = ({ data }) => {
         <div className='university-item' key={uuid()}>
             <h4>{university.name}</h4>
             <span>{university.country}</span>
-            {university.web_pages.map(page => <a key={uuid()} href={page} target='_blank'>You can visit their page here...</a>)}
+            {university.web_pages.map(page => <a key={uuid()} href={page} rel='norefferer' target='_blank'>You can visit their page here...</a>)}
         </div>
         )
 
         return universityItem;
     })
-    console.log(data.length)
 
   return (
     <div className='universities-wrapper'>
